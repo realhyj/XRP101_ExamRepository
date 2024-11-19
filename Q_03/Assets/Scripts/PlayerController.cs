@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
     [field: Range(0, 100)]
     public int Hp { get; private set; }
 
-    private AudioSource _audio;
+    [SerializeField] private AudioSource _audio;
 
     private void Awake()
     {
         Init();
     }
-
+    
     private void Init()
     {
         _audio = GetComponent<AudioSource>();
@@ -26,12 +26,24 @@ public class PlayerController : MonoBehaviour
 
         if (Hp <= 0)
         {
+
             Die();
         }
     }
 
     public void Die()
     {
+        if (_audio == null)
+        {
+            Debug.LogError("AudioSource component is missing!");
+            return;
+        }
+
+        if (_audio.clip == null)
+        {
+            Debug.LogError("AudioClip is missing in AudioSource!");
+            return;
+        }
         _audio.Play();
         gameObject.SetActive(false);
     }

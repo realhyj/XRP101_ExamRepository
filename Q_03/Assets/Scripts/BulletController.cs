@@ -26,9 +26,8 @@ public class BulletController : PooledBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other
-                .GetComponent<PlayerController>()
-                .TakeHit(_damageValue);
+            other.GetComponent<PlayerController>().TakeHit(_damageValue);
+            ReturnPool();
         }
     }
 
@@ -40,7 +39,8 @@ public class BulletController : PooledBehaviour
     
     private void Fire()
     {
-        _rigidbody.AddForce(transform.forward * _force, ForceMode.Impulse);
+        _rigidbody.velocity = transform.forward * _force;
+        //_rigidbody.AddForce(transform.forward * _force, ForceMode.Impulse);
     }
 
     private IEnumerator DeactivateRoutine()
