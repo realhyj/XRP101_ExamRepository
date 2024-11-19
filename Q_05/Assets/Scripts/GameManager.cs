@@ -21,5 +21,6 @@ public class GameManager : SingletonBehaviour<GameManager>
     public void LoadScene(int buildIndex)
     {
         SceneManager.LoadScene(buildIndex);
+
     }
 }
