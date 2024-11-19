@@ -11,12 +11,12 @@ public class CubeManager : MonoBehaviour
 
     private void Awake()
     {
-        SetCubePosition(3, 0, 3);
     }
 
     private void Start()
     {
         CreateCube();
+        SetCubePosition(3, 0, 3);
     }
 
     private void SetCubePosition(float x, float y, float z)
@@ -24,6 +24,8 @@ public class CubeManager : MonoBehaviour
         _cubeSetPoint.x = x;
         _cubeSetPoint.y = y;
         _cubeSetPoint.z = z;
+        Debug.Log(_cubeSetPoint);
+        _cubeController.SetPoint = _cubeSetPoint;
         _cubeController.SetPosition();
     }
 
@@ -31,6 +33,5 @@ public class CubeManager : MonoBehaviour
     {
         GameObject cube = Instantiate(_cubePrefab);
         _cubeController = cube.GetComponent<CubeController>();
-        _cubeSetPoint = _cubeController.SetPoint;
     }
 }
