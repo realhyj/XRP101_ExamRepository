@@ -18,4 +18,12 @@
 제시된 프로젝트에서 발생하는 `문제들을 모두 서술`하고 올바르게 동작하도록 `소스코드를 개선`하시오.
 
 ## 답안
-- 
+1) Q 입력시, damagable.TakeHit(Controller.AttackValue);에서 문제가 발생한다.
+	-> null에 대한 예외처리 문제인 것 같다. 
+	-> if (damagable != null)
+		{
+   			 damagable.TakeHit(Controller.AttackValue);
+		} 로 수정하여 예외처리를 한다
+2) Q 입력시, 오버플로우가 발생한다.
+	-> StateMachine과 StateAttack에서 생기는 것으로 추정된다.
+	-> 
