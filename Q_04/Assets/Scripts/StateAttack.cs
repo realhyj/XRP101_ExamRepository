@@ -46,7 +46,10 @@ public class StateAttack : PlayerState
         foreach (Collider col in cols)
         {
             damagable = col.GetComponent<IDamagable>();
-            damagable.TakeHit(Controller.AttackValue);
+            if (damagable != null)
+            {
+                damagable.TakeHit(Controller.AttackValue);
+            }
         }
     }
 
