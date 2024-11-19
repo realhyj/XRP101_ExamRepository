@@ -12,4 +12,14 @@
 제시된 소스코드에서 문제가 발생하는 `원인을 모두 서술`하시오.
 
 ## 답안
-- 
+1) 큐브가 생성되지 않았는데, 큐브의 Transform 값을 조절하려해서 오류가 발생하는 것 같다.
+	-> Awake에 있는 SetCubePosition(3, 0, 3); 코드를 CreateCube(); 코드 아래로 이동시켰다.
+	-> 큐브가 생성은 되는 걸 볼 수 있다.
+	-> 하지만 큐브의 좌표 값이 SetCubePositiond으로 설정한 (3,0,3)이 아닌, (0,0,0)으로 설정되어 있다.
+
+2) 디버그 로그를 통해 값이 전달이 되는지 확인한다.
+	-> 확인해 보니, 큐브 컨트롤러의 셋포인트를 큐브매니저에서의 설정한 3,0,3을 넣어 줘야하는데 반대로 하여
+	-> 3,0,3 을 다시 0,0,0으로 만들고 있었다.
+		_cubeSetPoint = _cubeController.SetPoint; 코드를
+		_cubeController.SetPoint = _cubeSetPoint; 으로 변경하여 문제를 해결했다.
+	->또한 SetPoint의 {get; private set;}의 private를 제거했다.
