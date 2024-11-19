@@ -24,6 +24,14 @@ public class RotateSpeedButton : MonoBehaviour
         _minusButton.onClick.AddListener(MinusScore);
     }
 
-    private void PlusScore() => GameManager.Intance.Score += 0.05f;
-    private void MinusScore() => GameManager.Intance.Score -= 0.05f;
+    private void PlusScore() 
+    {
+        Debug.Log("╩С╫б");
+        GameManager.Instance.Score += 0.05f;
+    }
+    private void MinusScore()
+    {
+        Debug.Log("го╤Т");
+        GameManager.Instance.Score -= 0.05f;
+    }
 }
